@@ -582,6 +582,12 @@ private extension SKPhotoBrowser {
         // timer update
         cancelControlHiding()
         
+        // toolbar animation
+        UIView.animate(withDuration: 0.35,
+                       animations: { () -> Void in
+                        self.toolbar.alpha = hidden ? 0.0 : 1.0
+        }, completion: nil)
+        
         // scroll animation
         pagingScrollView.setControlsHidden(hidden: hidden)
 
