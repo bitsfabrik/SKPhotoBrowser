@@ -56,7 +56,7 @@ open class SKPhotoBrowser: UIViewController {
     open var cancelTitle = "Cancel"
 
     // MARK: - Initializer
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
@@ -71,16 +71,18 @@ open class SKPhotoBrowser: UIViewController {
     }
     
     @available(*, deprecated)
-    public convenience init(originImage: UIImage, photos: [SKPhotoProtocol], animatedFromView: UIView) {
-        self.init(nibName: nil, bundle: nil)
+    public init(originImage: UIImage, photos: [SKPhotoProtocol], animatedFromView: UIView) {
+        super.init(nibName: nil, bundle: nil)
+        setup()
         self.photos = photos
         self.photos.forEach { $0.checkCache() }
         animator.senderOriginImage = originImage
         animator.senderViewForAnimation = animatedFromView
     }
     
-    public convenience init(photos: [SKPhotoProtocol], initialPageIndex: Int) {
-        self.init(nibName: nil, bundle: nil)
+    public init(photos: [SKPhotoProtocol], initialPageIndex: Int) {
+        super.init(nibName: nil, bundle: nil)
+        setup()
         self.photos = photos
         self.photos.forEach { $0.checkCache() }
         self.currentPageIndex = min(initialPageIndex, photos.count - 1)
