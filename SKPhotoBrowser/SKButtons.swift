@@ -59,6 +59,10 @@ class SKImageButton: SKButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup(imageName)
+        updateShowAndHideFrame()
+    }
+    
+    func updateShowAndHideFrame() {
         showFrame = CGRect(x: marginX, y: marginY, width: size.width, height: size.height)
         hideFrame = CGRect(x: marginX, y: -marginY, width: size.width, height: size.height)
     }
@@ -78,17 +82,6 @@ class SKCloseButton: SKImageButton {
         get { return SKButtonOptions.closeButtonPadding.y + extraMarginY }
         set { super.marginY = newValue }
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup(imageName)
-        showFrame = CGRect(x: marginX, y: marginY, width: size.width, height: size.height)
-        hideFrame = CGRect(x: marginX, y: -marginY, width: size.width, height: size.height)
-    }
 }
 
 class SKDeleteButton: SKImageButton {
@@ -104,16 +97,5 @@ class SKDeleteButton: SKImageButton {
     override var marginY: CGFloat {
         get { return SKButtonOptions.deleteButtonPadding.y + extraMarginY }
         set { super.marginY = newValue }
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup(imageName)
-        showFrame = CGRect(x: marginX, y: marginY, width: size.width, height: size.height)
-        hideFrame = CGRect(x: marginX, y: -marginY, width: size.width, height: size.height)
     }
 }
