@@ -68,7 +68,9 @@ class SKPaginationView: UIView {
         }
         
         guard let prevButton = prevButton, let nextButton = nextButton else { return }
+        prevButton.isHidden = browser.photos.count <= 1
         prevButton.isEnabled = (currentPageIndex > 0)
+        nextButton.isHidden = browser.photos.count <= 1
         nextButton.isEnabled = (currentPageIndex < browser.photos.count - 1)
     }
     
